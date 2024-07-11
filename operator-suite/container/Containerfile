@@ -87,6 +87,8 @@ CMD ["/bin/bash"]
 # Set permissions
 RUN mkdir -p /app/test-results && \
     chmod 0775 /app && \
+    chgrp -R 0 /app && \
+    chmod -R g=u /app && \
     find /app -type f -exec chmod 0664 \{\} \; && \
     find /app -type d -exec chmod 0775 \{\} \; && \
     find /app -name *.sh -exec chmod 0775 \{\} \;
